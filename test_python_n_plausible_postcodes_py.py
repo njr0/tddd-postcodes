@@ -21,7 +21,7 @@ class Test_PYTHON_N_PLAUSIBLE_POSTCODES(ReferenceTestCase):
 
     generated_files = [
         os.path.join(cwd, 'n-plausible-postcodes-defs.tex'),
-    os.path.join(cwd, 'n-plausible-postcodes-results.json')
+    os.path.join(cwd, 'n-plausible-postcodes.json')
     ]
     @classmethod
     def setUpClass(cls):
@@ -53,9 +53,9 @@ class Test_PYTHON_N_PLAUSIBLE_POSTCODES(ReferenceTestCase):
                                    os.path.join(self.refdir, 'n-plausible-postcodes-defs.tex'),
                                    encoding='ascii')
 
-    def test_n_plausible_postcodes_results_json(self):
-        self.assertTextFileCorrect(os.path.join(self.cwd, 'n-plausible-postcodes-results.json'),
-                                   os.path.join(self.refdir, 'n-plausible-postcodes-results.json'),
+    def test_n_plausible_postcodes_json(self):
+        self.assertTextFileCorrect(os.path.join(self.cwd, 'n-plausible-postcodes.json'),
+                                   os.path.join(self.refdir, 'n-plausible-postcodes.json'),
                                    encoding='ascii')
 
 if __name__ == '__main__':
