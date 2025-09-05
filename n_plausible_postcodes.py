@@ -31,6 +31,8 @@ if __name__ == '__main__':
     n = n_poss_postcodes_for_re()
     print(f'Number of postcode-like strings matching\n{RE}:\n{n:,}\n')
     d = {'n_plausible_postcodes': f'{n:,}', 'postcodeRE': RE}
-    with open('n-plausible-postcodes-results.json', 'w') as f:
+    json_path = 'n-plausible-postcodes-results.json'
+    with open(json_path, 'w') as f:
         json.dump(d, f)
+    print(f'Written {json_path}.')
     dict_to_tex_macros(d, 'n-plausible-postcodes-defs.tex', verbose=True)
