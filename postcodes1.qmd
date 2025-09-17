@@ -3,6 +3,8 @@ title: "Quarto Postcodes (inline)"
 format:
   html:
     code-fold: true
+  pdf:
+    toc: false
 jupyter: python3
 ---
 

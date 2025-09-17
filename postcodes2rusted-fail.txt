@@ -1,0 +1,36 @@
+
+Starting python3 kernel...Done
+
+Executing 'postcodes2rusted-fail.quarto_ipynb'
+  Cell 1/2: ''...Done
+  Cell 2/2: ''...
+
+An error occurred while executing the following cell:
+------------------
+with open('ref/python_postcodes_py/postcodes.json') as f:
+    ref = json.load(f)
+assert d == ref
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAssertionError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 3[39m
+[32m      1[39m [38;5;28;01mwith[39;00m [38;5;28mopen[39m([33m'[39m[33mref/python_postcodes_py/postcodes.json[39m[33m'[39m) [38;5;28;01mas[39;00m f:
+[32m      2[39m     ref = json.load(f)
+[32m----> [39m[32m3[39m [38;5;28;01massert[39;00m d == ref
+
+[31mAssertionError[39m: 
+
+[33mWARN: Should not have arrived here:[39m
+[91mERROR: [non-error-thrown] undefined
+
+Stack trace:
+    at _Command.handleError (file:///Applications/quarto/bin/quarto.js:10032:117)
+    at _Command.parseCommand (file:///Applications/quarto/bin/quarto.js:9719:12)
+    at eventLoopTick (ext:core/01_core.js:178:7)
+    at async quarto (file:///Applications/quarto/bin/quarto.js:175930:5)
+    at async file:///Applications/quarto/bin/quarto.js:175958:5
+    at async file:///Applications/quarto/bin/quarto.js:175813:14
+    at async mainRunner (file:///Applications/quarto/bin/quarto.js:175815:5)
+    at async file:///Applications/quarto/bin/quarto.js:175951:3[39m

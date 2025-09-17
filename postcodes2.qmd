@@ -3,6 +3,8 @@ title: "Quarto Postcodes (with inclusion)"
 format:
   html:
     code-fold: true
+  pdf:
+    toc: false
 jupyter: python3
 ---
 
@@ -14,8 +16,8 @@ assert d == ref
 ```
 The number of postcode-like strings matching
 
-    `{python} d['postcodeRE']`
+    `{python} ref['postcodeRE']`
 
-is `{python} d['n_str']`
+is `{python} ref['n_str']`
 
 

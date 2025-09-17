@@ -40,6 +40,6 @@ Compare with:
 
 
 ----------------------------------------------------------------------
-Ran 6 tests in 0.463s
+Ran 6 tests in 0.443s
 
 FAILED (failures=2)
