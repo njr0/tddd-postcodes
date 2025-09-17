@@ -1,6 +1,0 @@
-Number of postcode-like strings matching
-^[A-Z]{1,2}[0-9]{1,2}[A-Z]? [0-9][A-Z]{2}$:
-14,094,194,400
-
-Written n-plausible-postcodes.json.
-Written n-plausible-postcodes-defs.tex.

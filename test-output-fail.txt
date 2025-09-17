@@ -1,0 +1,45 @@
+..2 lines are different, starting at line 1
+Compare with:
+    diff /Users/njr/blogs/tdda-code/tddd-postcodes/postcodes-defs.tex /Users/njr/blogs/tdda-code/tddd-postcodes/ref/python_postcodes_py/postcodes-defs.tex
+
+F2 lines are different, starting at line 2
+Compare with:
+    diff /Users/njr/blogs/tdda-code/tddd-postcodes/postcodes.json /Users/njr/blogs/tdda-code/tddd-postcodes/ref/python_postcodes_py/postcodes.json
+
+F..
+======================================================================
+FAIL: test_postcodes_defs_tex (__main__.Test_PYTHON_POSTCODES.test_postcodes_defs_tex)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/njr/blogs/tdda-code/tddd-postcodes/test_python_postcodes_py.py", line 52, in test_postcodes_defs_tex
+    self.assertTextFileCorrect(os.path.join(self.cwd, 'postcodes-defs.tex'),
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               os.path.join(self.refdir, 'postcodes-defs.tex'),
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               encoding='ascii')
+                               ^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 2 lines are different, starting at line 1
+Compare with:
+    diff /Users/njr/blogs/tdda-code/tddd-postcodes/postcodes-defs.tex /Users/njr/blogs/tdda-code/tddd-postcodes/ref/python_postcodes_py/postcodes-defs.tex
+
+
+======================================================================
+FAIL: test_postcodes_json (__main__.Test_PYTHON_POSTCODES.test_postcodes_json)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/njr/blogs/tdda-code/tddd-postcodes/test_python_postcodes_py.py", line 57, in test_postcodes_json
+    self.assertTextFileCorrect(os.path.join(self.cwd, 'postcodes.json'),
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               os.path.join(self.refdir, 'postcodes.json'),
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               encoding='ascii')
+                               ^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 2 lines are different, starting at line 2
+Compare with:
+    diff /Users/njr/blogs/tdda-code/tddd-postcodes/postcodes.json /Users/njr/blogs/tdda-code/tddd-postcodes/ref/python_postcodes_py/postcodes.json
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.463s
+
+FAILED (failures=2)

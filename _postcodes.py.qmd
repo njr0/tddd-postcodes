@@ -1,13 +1,10 @@
----
-title: "UK Postcodes matching a Reasonable Regex"
-format:
-  html:
-    code-fold: true
-jupyter: python3
----
-
 ```{python}
-from letters import nL         # number of letters in alphabet
+
+import json
+from letters import nL
+from tdda.utils import dict_to_tex_macros
+
+RE = r'^[A-Z]{1,2}[0-9]{1,2}[A-Z]? [0-9][A-Z]{2}$'
 
 def n_poss_postcodes_for_re():
     """
@@ -23,20 +20,17 @@ def n_poss_postcodes_for_re():
                                    # The +1 is for ones not using a subdistrict
 
     n_outcodes = n_postal_areas * n_postal_districts * n_subdistricts
-
     n_incodes = 10 * nL * nL       # Digit then two letters
-
     n_postcodes = n_outcodes * n_incodes
 
     return n_postcodes
 
 
-RE = r'^[A-Z]{1,2}[0-9]{1,2}[A-Z]? [0-9][A-Z]{2}$'
-n = n_poss_postcodes_for_re()
-n_formatted = f'{n:,}'
+if __name__ == '__main__':
+    n = n_poss_postcodes_for_re()
+    d = {'n': n, 'n_str': f'{n:,}', 'postcodeRE': RE}
+    json_path = 'postcodes.json'
+    with open(json_path, 'w') as f:
+        json.dump(d, f, indent=4)
+    dict_to_tex_macros(d, 'postcodes-defs.tex', verbose=False)
 ```
-
-`{python} n_formatted` postcode-like strings match the regular expression:
-
-`{python} RE`
-

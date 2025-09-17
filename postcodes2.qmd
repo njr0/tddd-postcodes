@@ -1,0 +1,21 @@
+---
+title: "Quarto Postcodes (with inclusion)"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+{{< include _postcodes.py.qmd >}}
+```{python}
+with open('ref/python_postcodes_py/postcodes.json') as f:
+    ref = json.load(f)
+assert d == ref
+```
+The number of postcode-like strings matching
+
+    `{python} d['postcodeRE']`
+
+is `{python} d['n_str']`
+
+

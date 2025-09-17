@@ -1,31 +1,51 @@
-all:	n_plausible_postcodes1.pdf \
-        n_plausible_postcodes2.pdf \
-        n_plausible_postcodes3.pdf
+pdfs:	postcodes1.pdf \
+        postcodes2.pdf
+#        postcodes3.pdf
+
+first: cleaner gentest test rustedtest diffs postcodes.txt pdfs
 
 clean:
 	rm -f *.pdf *.aux *.log *.html
+	cp letters26.py letters.py
 
-.PHONY:
-1: n_plausible_postcodes1.pdf
+cleaner: clean
+	rm -rf ref *.txt
 
-n_plausible_postcodes1.pdf: n_plausible_postcodes1.qmd
-	quarto render n_plausible_postcodes1.qmd --to pdf
-	quarto render n_plausible_postcodes1.qmd
-	cp n_plausible_postcodes1.html n_plausible_postcodes1.pdf ../../output
+postcodes1.pdf: postcodes1.qmd
+	quarto render postcodes1.qmd --to pdf
+	quarto render postcodes1.qmd
+	cp postcodes1.html postcodes1.pdf ../../tdda/output
 
-n_plausible_postcodes2.pdf: n_plausible_postcodes2.qmd \
-        _n_plausible_postcodes.py.qmd
-	quarto render n_plausible_postcodes2.qmd --to pdf
+postcodes2.pdf: postcodes2.qmd \
+                _postcodes.py.qmd \
+                test
+	quarto render postcodes2.qmd --to pdf
 
-_n_plausible_postcodes.py.qmd: n_plausible_postcodes.py PRE POST
-	cat PRE n_plausible_postcodes.py POST > _n_plausible_postcodes.py.qmd
+_postcodes.py.qmd: postcodes.py PRE POST
+	cat PRE postcodes.py POST > _postcodes.py.qmd
 
-n_plausible_postcodes3.pdf: n_plausible_postcodes3.tex \
-                            n_plausible_postcodes.txt \
-                            test_sh_n_plausible_postcodes_sh.py \
-                            ref/sh_n_plausible_postcodes_sh/*
-	python test_sh_n_plausible_postcodes_sh.py
-	pdflatex n_plausible_postcodes3
+postcodes3.pdf: postcodes3.tex test
+	pdflatex postcodes3
 
-n_plausible_postcodes3.txt: n_plausible_postcodes.py
-	sh n_plausible_postcodes.sh
+postcodes.txt: restore postcodes.py letters.py
+	python postcodes.py > postcodes.txt
+
+test: restore
+	python test_python_postcodes_py.py > test-output.txt 2>&1
+
+rustedtest:
+	cp letters52.py letters.py
+	-python test_python_postcodes_py.py > test-output-fail.txt 2>&1
+	cp letters26.py letters.py
+
+gentest:
+	tdda gentest 'python postcodes.py'  > gentest-output.txt 2>&1
+
+diffs:
+	-diff postcodes-defs.tex ref/python_postcodes_py/postcodes-defs.tex \
+              > diff-output.txt
+	-diff postcodes.json ref/python_postcodes_py/postcodes.json \
+              >> diff-output.txt
+
+restore:
+	cp letters26.py letters.py

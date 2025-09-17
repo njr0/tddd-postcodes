@@ -1,6 +1,12 @@
-import json
+---
+title: "Quarto Postcodes (inline)"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
 
-from tdda.utils import dict_to_tex_macros
+```{python}
 from letters import nL
 
 RE = r'^[A-Z]{1,2}[0-9]{1,2}[A-Z]? [0-9][A-Z]{2}$'
@@ -19,9 +25,7 @@ def n_poss_postcodes_for_re():
                                    # The +1 is for ones not using a subdistrict
 
     n_outcodes = n_postal_areas * n_postal_districts * n_subdistricts
-
     n_incodes = 10 * nL * nL       # Digit then two letters
-
     n_postcodes = n_outcodes * n_incodes
 
     return n_postcodes
@@ -29,10 +33,9 @@ def n_poss_postcodes_for_re():
 
 if __name__ == '__main__':
     n = n_poss_postcodes_for_re()
-    print(f'Number of postcode-like strings matching\n{RE}:\n{n:,}\n')
-    d = {'n_plausible_postcodes': f'{n:,}', 'postcodeRE': RE}
-    json_path = 'n-plausible-postcodes.json'
-    with open(json_path, 'w') as f:
-        json.dump(d, f, indent=4)
-    print(f'Written {json_path}.')
-    dict_to_tex_macros(d, 'n-plausible-postcodes-defs.tex', verbose=True)
+```
+The number of postcode-like strings matching
+
+    `{python} RE`
+
+is `{python} f'{n:,}'`

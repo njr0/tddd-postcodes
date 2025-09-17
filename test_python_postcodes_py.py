@@ -1,9 +1,9 @@
 """
-test_python_n_plausible_postcodes_py.py: Automatically generated test code from tdda gentest.
+test_python_postcodes_py.py: Automatically generated test code from tdda gentest.
 
 Generation command:
 
-tdda gentest 'python n_plausible_postcodes.py' 'test_python_n_plausible_postcodes_py.py' '.'
+tdda gentest 'python postcodes.py' 'test_python_postcodes_py.py' '.'
 """
 
 import os
@@ -14,14 +14,14 @@ from tdda.referencetest import ReferenceTestCase
 from tdda.referencetest.gentest import exec_command
 
 
-class Test_PYTHON_N_PLAUSIBLE_POSTCODES(ReferenceTestCase):
-    command = 'python n_plausible_postcodes.py'
+class Test_PYTHON_POSTCODES(ReferenceTestCase):
+    command = 'python postcodes.py'
     cwd = os.path.abspath(os.path.dirname(__file__))
-    refdir = os.path.join(cwd, 'ref', 'python_n_plausible_postcodes_py')
+    refdir = os.path.join(cwd, 'ref', 'python_postcodes_py')
 
     generated_files = [
-        os.path.join(cwd, 'n-plausible-postcodes-defs.tex'),
-    os.path.join(cwd, 'n-plausible-postcodes.json')
+        os.path.join(cwd, 'postcodes-defs.tex'),
+    os.path.join(cwd, 'postcodes.json')
     ]
     @classmethod
     def setUpClass(cls):
@@ -48,14 +48,14 @@ class Test_PYTHON_N_PLAUSIBLE_POSTCODES(ReferenceTestCase):
         self.assertStringCorrect(self.error,
                                  os.path.join(self.refdir, 'STDERR'))
 
-    def test_n_plausible_postcodes_defs_tex(self):
-        self.assertTextFileCorrect(os.path.join(self.cwd, 'n-plausible-postcodes-defs.tex'),
-                                   os.path.join(self.refdir, 'n-plausible-postcodes-defs.tex'),
+    def test_postcodes_defs_tex(self):
+        self.assertTextFileCorrect(os.path.join(self.cwd, 'postcodes-defs.tex'),
+                                   os.path.join(self.refdir, 'postcodes-defs.tex'),
                                    encoding='ascii')
 
-    def test_n_plausible_postcodes_json(self):
-        self.assertTextFileCorrect(os.path.join(self.cwd, 'n-plausible-postcodes.json'),
-                                   os.path.join(self.refdir, 'n-plausible-postcodes.json'),
+    def test_postcodes_json(self):
+        self.assertTextFileCorrect(os.path.join(self.cwd, 'postcodes.json'),
+                                   os.path.join(self.refdir, 'postcodes.json'),
                                    encoding='ascii')
 
 if __name__ == '__main__':
